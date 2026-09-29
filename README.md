@@ -1,10 +1,12 @@
 
+
 ```markdown
-# Secure Google Login System (Pure PHP & cURL)
+# PHP Google OAuth Login System
 
 A lightweight, dependency-free Google OAuth 2.0 authentication and multi-device session management system built with **Pure PHP**, **MySQLi**, and **cURL**. Designed specifically for shared hosting (cPanel) environments without requiring Composer or bulky SDKs.
 
 ## 🚀 Features
+
 * **Zero Dependencies:** Pure PHP implementation using cURL for lightweight performance.
 * **Secure Architecture:** Uses a unique, unguessable `public_id` string as the primary key and foreign key reference.
 * **Multi-Device Persistent Sessions:** Device-specific "Remember Me" tokens saved in the database with secure, HttpOnly cookies.
@@ -14,6 +16,7 @@ A lightweight, dependency-free Google OAuth 2.0 authentication and multi-device 
 ---
 
 ## 📁 File Structure
+
 ```text
 your-website-folder/
 ├── config.php            # Database connection & reusable auth verification function
@@ -53,13 +56,15 @@ CREATE TABLE IF NOT EXISTS `user_tokens` (
 
 ---
 
-## ⚙️ Configuration
+## ⚙️ Configuration & Installation
 
-1. Update your database credentials in **`config.php`**.
-2. Add your Google Cloud Client ID and Client Secret in **`login.php`** and **`redirect.php`**.
-3. Configure your Google Cloud Console Authorized Redirect URI to point to your `redirect.php` file (e.g., `http://localhost/your-project/redirect.php` or `https://yoursite.com/redirect.php`).
+1. Clone or download the repository into your local server or cPanel public directory.
+2. Update your database credentials in **`config.php`**.
+3. Head over to the [Google Cloud Console Credentials Page](https://console.cloud.google.com/auth/clients) to create your project credentials (Client ID and Client Secret).
+4. Add your generated Google Client ID and Client Secret into **`login.php`** and **`redirect.php`**.
+5. Configure your Google Cloud Console Authorized Redirect URI to point directly to your `redirect.php` file (e.g., `http://localhost/your-project/redirect.php` or `https://yoursite.com/redirect.php`).
+
 
 ```
 
-
-
+```
