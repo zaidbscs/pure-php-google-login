@@ -65,6 +65,4 @@ CREATE TABLE IF NOT EXISTS `user_tokens` (
 5. Configure your Google Cloud Console Authorized Redirect URI to point directly to your `redirect.php` file (e.g., `http://localhost/your-project/redirect.php` or `https://yoursite.com/redirect.php`).
 
 
-```
 
-```
