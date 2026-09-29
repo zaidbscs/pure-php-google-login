@@ -61,30 +61,5 @@ CREATE TABLE IF NOT EXISTS `user_tokens` (
 
 ```
 
----
 
-### Step 2: Push Your Code to GitHub
-
-Open your terminal or command prompt inside your project folder (`your-website-folder`), and run these commands one by one:
-
-```bash
-# 1. Initialize a new Git repository
-git init
-
-# 2. Stage all your project files (including config, index, login, redirect, welcome, logout, and README)
-git add .
-
-# 3. Commit your files with a message
-git commit -m "Initial commit: Secure pure PHP Google OAuth login system"
-
-# 4. Rename default branch to main
-git branch -M main
-
-# 5. Link your local repo to your GitHub repository (replace with your actual GitHub repo URL)
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
-
-# 6. Push your code to GitHub
-git push -u origin main
-
-```
 
