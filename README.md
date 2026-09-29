@@ -1,1 +1,90 @@
-# pure-php-google-login
+
+```markdown
+# Secure Google Login System (Pure PHP & cURL)
+
+A lightweight, dependency-free Google OAuth 2.0 authentication and multi-device session management system built with **Pure PHP**, **MySQLi**, and **cURL**. Designed specifically for shared hosting (cPanel) environments without requiring Composer or bulky SDKs.
+
+## 🚀 Features
+* **Zero Dependencies:** Pure PHP implementation using cURL for lightweight performance.
+* **Secure Architecture:** Uses a unique, unguessable `public_id` string as the primary key and foreign key reference.
+* **Multi-Device Persistent Sessions:** Device-specific "Remember Me" tokens saved in the database with secure, HttpOnly cookies.
+* **Smart Entry Routing:** Automatically detects existing sessions/cookies on the homepage (`index.php`) and login page (`login.php`), redirecting authenticated users straight to the dashboard.
+* **Cascade Deletions:** Deleting a user automatically cleans up all associated device tokens via foreign key constraints.
+
+---
+
+## 📁 File Structure
+```text
+your-website-folder/
+├── config.php            # Database connection & reusable auth verification function
+├── index.php             # Public landing page with smart auth check
+├── login.php             # Dedicated login portal with Google OAuth button
+├── redirect.php          # cURL OAuth callback handler & user registration
+├── welcome.php           # Protected dashboard page
+└── logout.php            # Device-specific session & cookie destroyer
+
+```
+
+---
+
+## 🛠️ Database Setup
+
+Run the following SQL script in your MySQL database (via phpMyAdmin):
+
+```sql
+CREATE TABLE IF NOT EXISTS `users` (
+  `public_id` VARCHAR(64) PRIMARY KEY,
+  `google_id` VARCHAR(255) NOT NULL UNIQUE,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `picture` VARCHAR(500) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `user_tokens` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `user_id` VARCHAR(64) NOT NULL,
+  `token` VARCHAR(255) NOT NULL,
+  `token_expiry` DATETIME NOT NULL,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`public_id`) ON DELETE CASCADE
+);
+
+```
+
+---
+
+## ⚙️ Configuration
+
+1. Update your database credentials in **`config.php`**.
+2. Add your Google Cloud Client ID and Client Secret in **`login.php`** and **`redirect.php`**.
+3. Configure your Google Cloud Console Authorized Redirect URI to point to your `redirect.php` file (e.g., `http://localhost/your-project/redirect.php` or `https://yoursite.com/redirect.php`).
+
+```
+
+---
+
+### Step 2: Push Your Code to GitHub
+
+Open your terminal or command prompt inside your project folder (`your-website-folder`), and run these commands one by one:
+
+```bash
+# 1. Initialize a new Git repository
+git init
+
+# 2. Stage all your project files (including config, index, login, redirect, welcome, logout, and README)
+git add .
+
+# 3. Commit your files with a message
+git commit -m "Initial commit: Secure pure PHP Google OAuth login system"
+
+# 4. Rename default branch to main
+git branch -M main
+
+# 5. Link your local repo to your GitHub repository (replace with your actual GitHub repo URL)
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+
+# 6. Push your code to GitHub
+git push -u origin main
+
+```
+
