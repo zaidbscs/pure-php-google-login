@@ -1,4 +1,8 @@
+## 📸 Screenshots
 
+| Homepage | Login Page | Dashboard |
+| :---: | :---: | :---: |
+| ![Home](assets/home.png) | ![Login](assets/login.png) | ![Dashboard](assets/dashboard.png) |
 
 ```markdown
 # PHP Google OAuth Login System
